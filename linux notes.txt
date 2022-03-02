@@ -1,0 +1,204 @@
+Filter commands:
+
+cut:
+The cut command in UNIX is a command for cutting out the sections from each line of files
+and writing the result to standard output.
+
+$cut -d ":" -f1 /etc/passwd
+$cut -f1 sample.txt
+
+grep : Global Regular Expression Print
+
+Grep is a Linux / Unix command-line tool used to search for a string of characters in a specified file.
+The text search pattern is called a regular expression.
+
+case-insensitive:
+$grep -i tape sample.txt
+
+count the occuances:
+$grep  -c radio sample.txt
+
+search in all the files in current dir:
+$grep radio *
+
+search in sub-dir also:
+$grep -r tape *
+
+search the exact word:
+$grep -w radio sample.txt
+
+search for the line:
+$grep "car radio" sample.txt
+
+sed:
+SED command in UNIX is stands for stream editor and it can perform lot’s of function on file like,
+find and replace, insertion or deletion.
+
+Though most common use of SED command in UNIX is for substitution or for find and replace
+
+$sed 's/Car/car/g' sample.txt
+
+$sed 's/Car/car/' sample.txt
+
+$sed 's/Car/car/2' sample.txt
+
+$sed -i 's/Car/car/g' sample.txt
+
+tee:
+
+tee command reads the standard input and writes it to both the standard output and one or more files.
+
+$cat sample.txt | tee file2.txt
+
+$wc -l sample.txt | tee file2.txt
+
+WC: word count
+
+$wc sample.txt
+
+$wc -l sample.txt
+
+$wc -w sample.txt
+
+$wc -c sample.txt
+
+sort:
+
+SORT command is used to sort a file, arranging the records in a particular order.
+By default, the sort command sorts file assuming the contents are ASCII.
+
+Using options in sort command, it can also be used to sort numerically.
+
+$sort sample.txt
+$cat sample.txt | sort
+
+$sort -n sample.txt
+
+$sort -r sample.txt
+
+$sort -nr sample.txt
+
+find:  
+
+find file in current dir:
+find . -name sample.txt
+
+find file in all files:
+find / -name sample.txt
+
+find dir:
+find / -type d -name DevopsDesk
+
+Find all php files in a directory:
+find . -type f -name "*.php"
+
+
+
+File Security:
+$sudo chmod u+rwx,go-rwx file.txt
+$sudo chmod ugo+rwx file.txt
+$sudo chmod u=rwx,go=rw hello
+$sudo chmod 755 file.txt
+$sudo chmod 777 file1.txt
+$sudo chmod 400 *
+$sudo chmod -r 777 /data
+
+find: Find command is used to search and locate the list of files and directories based on conditions you specify for files that match the arguments.
+search for file in current directory: $find . -name devopsdesk
+search for file in homedirectory: $find /home -name devopsdesk.txt
+search for directory in entire file system: $find / -type d -name DevOpsDesk
+search for all php files : $find . -type f -name "*.php"
+seach based on permissions: $find . -type f -perm 0777 -print
+
+locate: The locate is a command line utility for finding files by name in Linux, just like find command. However, it works more efficiently compared to its counterpart; 
+$ sudo yum install mlocate    [On CentOS/RHEL]
+$ sudo apt install mlocate    [On Debian/Ubuntu] 
+$ sudo updatedb
+
+then search for file using locate
+$ locate bash_completion.sh
+
+
+date: gives date  
+current date: $date
+UTC time : $date -u
+older/future date info: $date --date="2 year ago"
+                        $date --date="2 month ago"
+                        $date --date="next tue"
+some other commands:
+Command: 
+$date "+%D"
+Output: 
+10/11/17
+Command: 
+$date "+%D %T"
+Output: 
+10/11/17 16:13:27
+Command: 
+$date "+%Y-%m-%d"
+Output: 
+2017-10-11
+Command: 
+$date "+%Y/%m/%d"
+Output: 
+2017/10/11
+Command: 
+$date "+%A %B %d %T %y"
+Output: 
+Thursday October 07:54:29 12 17st
+
+cal: gives calendar  
+$cal
+$cal 2019
+$cal 4 2020
+$cal 2016
+
+AWK:
+It searches one or more files to see if they contain lines that matches with the specified patterns and then performs the associated actions. 
+Awk is abbreviated from the names of the developers – Aho, Weinberger, and Kernighan. 
+
+Print the entire data:awk '{print}' awk-file.txt
+Print matching text: awk '/manager/ {print}' awk-file.txt 
+print the column 1 and 4: awk '{print $1,$4}' awk-file.txt 
+awk '{print NR,$0}' awk-file.txt 
+awk '{print NR "- " $1 }' awk-file.txt
+awk '{ if($3 == "B6") print $0;}' awk-file.txt
+
+Reference: https://www.geeksforgeeks.org/awk-command-unixlinux-examples/
+
+Regex: Linux Regular Expressions are special characters which help search data and matching complex patterns.
+Regular expressions are shortened as 'regexp' or 'regex'. They are used in many Linux programs like grep, bash, rename, sed, etc.
+
+grep "^GNU" file1
+grep "and$" file1
+grep "..cept" file1
+grep "t[wo]o" file1
+grep "[^c]ode" file1
+grep "^[A-Z]" file1
+grep "^[0-9]" file1
+
+grep -E 'j|g' file1  
+grep -E '1*' file1  
+grep -E '1+' file1 
+echo 2014-06-30 | sed 's/\(....\)-\(..\)-\(..\)/\1:\2:\3/'  
+echo -e 'this\tis\tjavatpoint' | sed 's/\s/ /g'  
+
+Redirection:
+
+Input redirection: 
+$ cat > file1
+$ Mail -s "Subject" to-address < Filename
+
+Output Redirection:
+ls -al > listings
+ls -al >> listings
+cat file1 | grep 
+
+Error Redirection:
+zcho "hiii" 2> /dev/null
+
+YUM:
+
+yum upgrade and yum update will perform the same function that update to the latest current version of package.
+
+But the difference is Upgrade will delete obsolete packages, while update will preserve them.
